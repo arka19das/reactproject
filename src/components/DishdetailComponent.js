@@ -22,23 +22,28 @@ class DishDetail extends Component {
     }
 
     renderComments(comments) {
-        const dateFormat = { year: 'numeric', month: 'short', day: 'numeric' };
+        const dateFormat = { year: 'numeric', month: 'short', day: '2-digit' };
         if (comments != null) {
 
-            return (comments.map((comment) => {return( <
-                ul className = 'list-unstyled' >
+            return (comments.map((comment) => {
+                return ( < div className = "container" >
+                    <
+                    ul className = 'list-unstyled' >
                     <
                     li >
                     <
-                    p > { comment.comment } < /p>
-                     <p > --{ comment.author }, { new Date(comment.date).toLocaleDateString('en-US', dateFormat) } < /p> < /
-                li > <
-                    /ul>);
+                    p > { comment.comment } < /p> <
+                    p > --{ comment.author }, {
+                        new Intl.DateTimeFormat('en-US', dateFormat).format(new Date(Date.parse(comment.date)))
+                    } < /p> < /
+                    li > <
+                    /ul> < /
+                    div > );
 
 
             }));
         } else {
-            return ( < div >  < /div>);
+            return ( < div > < /div>);
             }
         }
 

@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { render } from 'react-dom';
-import DishDetail from './DishdetailComponent';
+
 
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDish: null
 
-        }
         console.log('Menu component constructor is invoked');
 
     }
     componentDidMount() {
         console.log('Menu component conmponentDidMount is invoked');
     }
-    onDishSelect(dish) {
-        this.setState({ selectedDish: dish });
 
-    }
     render() {
 
 
@@ -29,7 +23,8 @@ class Menu extends Component {
                 className = "col-12 col-md-5 m-1" >
                 <
                 Card onClick = {
-                    () => this.onDishSelect(dish)
+                    () => this.props.onClick(dish.id)
+
                 } >
 
                 <
@@ -54,13 +49,7 @@ class Menu extends Component {
             div className = "row" > { menu } < /
             div >
             <
-            div className = "row" >
-            <
-            DishDetail dish = { this.state.selectedDish }
-            />
-
-            <
-            /div > < /
+            /
             div >
         );
     }
