@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { render } from 'react-dom';
+import DishDetail from './DishdetailComponent';
 
 class Menu extends Component {
     constructor(props) {
@@ -8,68 +9,63 @@ class Menu extends Component {
         this.state = {
             selectedDish: null
 
-        };
+        }
+        console.log('Menu component constructor is invoked');
 
+    }
+    componentDidMount() {
+        console.log('Menu component conmponentDidMount is invoked');
     }
     onDishSelect(dish) {
         this.setState({ selectedDish: dish });
 
     }
-    renderDish(dish) {
-        if (dish != null) {
+    render() {
+
+
+        const menu = this.props.dishes.map((dish) => {
             return ( <
-                Card >
+                div key = { dish.id }
+                className = "col-12 col-md-5 m-1" >
+                <
+                Card onClick = {
+                    () => this.onDishSelect(dish)
+                } >
+
                 <
                 CardImg width = "100%"
                 src = { dish.image }
                 alt = { dish.name }
-                /> <
-                CardBody >
+                />  <
+                CardImgOverlay >
                 <
-                CardTitle > { dish.name } < /CardTitle > <
-                CardText > { dish.description } < /CardText> < /
-                CardBody > <
-                /Card>
-            );
-
-        } else {
-            return ( < div > < /div>);
-            }
-        }
-        render() {
-            const menu = this.props.dishes.map((dish) => {
-                return ( <
-                    div key = { dish.id }
-                    className = "col-12 col-md-5 m-1" >
-                    <
-                    Card onClick = {
-                        () => this.onDishSelect(dish)
-                    } >
-
-                    <
-                    CardImg width = "100%"
-                    src = { dish.image }
-                    alt = { dish.name }
-                    />  <
-                    CardImgOverlay >
-                    <
-                    CardTitle > { dish.name } < /CardTitle >  < /
-                    CardImgOverlay > <
-                    /Card>  < /
-                    div >
-
-                );
-            });
-
-            return ( <
-                div className = "container" >
-                <
-                div className = "row" > { menu } < /
+                CardTitle > { dish.name } < /CardTitle >  < /
+                CardImgOverlay > <
+                /Card>  < /
                 div >
-                <
-                div className = "row" > { this.renderDish(this.state.selectedDish) } < /div> <
-                /div>
+
             );
-        }
+        });
+        console.log('Menu component render is invoked');
+
+        return ( <
+            div className = "container" >
+            <
+            div className = "row" > { menu } < /
+            div >
+            <
+            div className = "row" >
+            <
+            DishDetail dish = { this.state.selectedDish }
+            />
+
+            <
+            /div > < /
+            div >
+        );
     }
-    export default Menu;
+}
+export default Menu;
+
+// <div className = "col-12 col-md-7 m-1" > { this.renderDishComments(this.state.selectedDish) } < /div>
+//
