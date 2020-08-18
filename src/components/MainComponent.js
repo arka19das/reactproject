@@ -13,7 +13,7 @@ import DishDetail from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
+import About from './AboutComponent';
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +48,12 @@ class Main extends Component {
 
                     );
                 }
-
+                const Aboutpage = () => {
+                    return ( <
+                        About leaders = { this.state.leaders }
+                        />
+                    );
+                }
                 return ( < div >
                     <
                     Header / >
@@ -58,9 +63,14 @@ class Main extends Component {
                     Route path = '/home'
                     component = { HomePage }
                     />   <
-                    Route exact path = "/contactus"
+                    Route path = "/contactus"
                     component = { Contact }
-                    />  <
+                    /> <
+                    Route path = "/aboutus"
+                    component = { Aboutpage }
+                    /> 
+
+                    <
                     Route exact path = '/menu'
                     component = {
                         () => < Menu dishes = { this.state.dishes }
