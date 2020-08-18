@@ -13,16 +13,16 @@ function Footer() {
         h5 > Links < /h5> <
         ul className = "list-unstyled" >
         <
-        li > < a href = "#" > Home < /a></li >
+        li > < a href = "/home" > Home < /a></li >
         <
-        li > < a href = "#" > About < /a></li >
+        li > < a href = "/aboutus" > About < /a></li >
         <
-        li > < a href = "#" > Menu < /a></li >
+        li > < a href = "/menu" > Menu < /a></li >
         <
-        li > < a href = "contactus.html" > Contact < /a></li >
+        li > < a href = "/contactus" > Contact < /a></li >
         <
-        /ul> <
-        /div> <
+        /ul> < /
+        div > <
         div className = "col-7 col-sm-5" >
         <
         h5 > Our Address < /h5> <
@@ -36,8 +36,8 @@ function Footer() {
         i className = "fa fa-fax fa-lg" > < /i>: +852 8765 4321<br / >
         <
         i className = "fa fa-envelope fa-lg" > < /i>: <a href="mailto:confusion@food.net">
-        confusion @food.net < /a> <
-        /address> <
+        confusion @food.net < /a> < /
+        address > <
         /div> <
         div className = "col-12 col-sm-4 align-self-center" >
         <
@@ -61,17 +61,17 @@ function Footer() {
         a className = "btn btn-social-icon"
         href = "mailto:" > < i className = "fa fa-envelope-o" > < /i></a >
         <
-        /div> <
-        /div> <
+        /div> < /
+        div > <
         /div> <
         div className = "row justify-content-center" >
         <
         div className = "col-auto" >
         <
-        p > ©Copyright 2018 Ristorante Con Fusion < /p> <
-        /div> <
-        /div> <
-        /div> <
+        p > ©Copyright 2018 Ristorante Con Fusion < /p> < /
+        div > <
+        /div> < /
+        div > <
         /div>
 
     );

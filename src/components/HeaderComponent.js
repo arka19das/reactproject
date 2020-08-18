@@ -1,18 +1,71 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Jumbotron } from 'reactstrap';
-
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 class Header extends Component {
-    //we need to mainatin some ui so we are using class component instead of using functions
+    constructor(props) {
+        super(props);
+        this.state = {
+            isNavOpen: false
+        };
+        this.toggleNav = this.toggleNav.bind(this); //why are we doing this??
+    }
+    toggleNav() {
+            this.setState({
+                isNavOpen: !this.state.isNavOpen
+            });
+        }
+        //we need to mainatin some ui so we are using class component instead of using functions
     render() {
         return ( < React.Fragment >
             <
-            Navbar dark >
+            Navbar dark expand = 'md' >
             <
-            div className = "container" >
+            div className = 'container' >
             <
-            NavbarBrand href = "/" > Ristorante Con Fusion < /NavbarBrand>  < /
-            div > <
-            /Navbar>  <
+            NavbarToggler onClick = { this.toggleNav }
+            /> <
+            NavbarBrand className = 'mr-auto'
+            href = '/' >
+            <
+            img src = 'assets/images/logo.png'
+            alt = 'Ristorante Con Fusion'
+            height = '30'
+            width = '41' / >
+            <
+            /NavbarBrand>   <
+            Collapse isOpen = { this.state.isNavOpen }
+            navbar >
+            <
+            Nav navbar >
+            <
+            NavItem >
+            <
+            NavLink className = 'nav-link'
+            to = '/home' > < span class = "fa fa-home fa-lg" > < /span> Home </NavLink >
+            <
+            /NavItem> <
+            NavItem >
+            <
+            NavLink className = 'nav-link'
+            to = '/aboutus' > < span class = "fa fa-info fa-lg" > < /span> About Us </NavLink >
+            <
+            /NavItem> <
+            NavItem >
+            <
+            NavLink className = 'nav-link'
+            to = '/menu' > < span class = "fa fa-list fa-lg" > < /span> Menu</NavLink >
+            <
+            /NavItem> <
+            NavItem >
+            <
+            NavLink className = 'nav-link'
+            to = '/contactus' > < span class = "fa fa-addrss-card fa-lg" > < /span> Conatct Us </NavLink >
+            <
+            /NavItem> <
+            /Nav> <
+            /Collapse> <
+            /div> <
+            /Navbar>   <
             Jumbotron >
             <
             div className = "container" >
