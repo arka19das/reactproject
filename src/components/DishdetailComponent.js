@@ -3,8 +3,12 @@ import { Card, CardImg, CardBody, CardText, CardTitle, Container } from 'reactst
 
 
 class DishDetail extends Component {
-
-
+    componentDidMount() {
+        console.log('DishDetail component conmponentDidMount is invoked');
+    }
+    componentDidUpdate() {
+        console.log('DishDetail component  componentDidUpdate is invoked');
+    }
     renderDish(dish) {
         return ( <
             Card >
@@ -48,6 +52,7 @@ class DishDetail extends Component {
         }
 
         render() {
+            console.log('DishDetail component  render is invoked');
             if (this.props.dish != null) {
                 return ( <
                     div className = 'container' >

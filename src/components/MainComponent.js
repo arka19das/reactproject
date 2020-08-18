@@ -20,7 +20,7 @@ class Main extends Component {
 
     }
     render() {
-
+        console.log("main render component invoked");
         return ( <
             div >
             <

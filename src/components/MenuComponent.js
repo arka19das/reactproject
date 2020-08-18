@@ -4,12 +4,7 @@ import { render } from 'react-dom';
 
 
 class Menu extends Component {
-    constructor(props) {
-        super(props);
 
-        console.log('Menu component constructor is invoked');
-
-    }
     componentDidMount() {
         console.log('Menu component conmponentDidMount is invoked');
     }
