@@ -7,9 +7,9 @@ class Header extends Component {
         this.state = {
             isNavOpen: false
         };
-        this.toggleNav = this.toggleNav.bind(this); //why are we doing this??
+        // this.toggleNav=this.toggleNav.bind(this);//why are we doing this??
     }
-    toggleNav() {
+    toggleNav = () => {
             this.setState({
                 isNavOpen: !this.state.isNavOpen
             });
