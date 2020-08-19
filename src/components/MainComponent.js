@@ -12,6 +12,8 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
 import { addComment, fetchDishes } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
+
 const mapstateToProps = state => {
     return {
         dishes: state.dishes,
@@ -23,7 +25,8 @@ const mapstateToProps = state => {
 const mapDispatchToProps = (dispatch) => ({
 
     addComment: (dishId, rating, author, comment) => dispatch(addComment((dishId, rating, author, comment))),
-    fetchDishes: () => { dispatch(fetchDishes()) }
+    fetchDishes: () => { dispatch(fetchDishes()) },
+    resetFeedbackForm: () => { dispatch(actions.reset('feedback')) }
 });
 class Main extends Component {
 
@@ -56,48 +59,51 @@ class Main extends Component {
                         );
                     }
                     const Aboutpage = () => {
-                        return ( < About leaders = { this.props.leaders }
-                            />);
-                        }
-                        return ( < div >
+                            return ( < About leaders = { this.props.leaders }
+                                />);
+                            }
+                            return ( < div >
 
-                            <
-                            Header / >
-
-                            <
-                            Switch >
-                            <
-                            Route path = '/home'
-                            component = { HomePage }
-                            /> <
-                            Route path = "/contactus"
-                            component = { Contact }
-                            /> <
-                            Route path = "/aboutus"
-                            component = { Aboutpage }
-                            />
-
-                            <
-                            Route exact path = '/menu'
-                            component = {
-                                () => < Menu dishes = { this.props.dishes }
-                                />} / >
                                 <
-                                Route path = '/menu/:dishId'
-                                component = { DishWithId }
-                                /> <
-                                Redirect to = "/home" / >
-                                <
-                                /Switch> <
-                                Footer / >
-                                <
-                                /div>
-                            );
-                        }
-                    }
+                                Header / >
 
-                    export default withRouter(connect(mapstateToProps, mapDispatchToProps)(Main));
-                    /*<
+                                <
+                                Switch >
+                                <
+                                Route path = '/home'
+                                component = { HomePage }
+                                />  <
+                                Route path = "/contactus"
+                                component = {
+                                    () => < Contact resetFeedbackForm = { this.props.resetFeedbackForm }
+                                    /> }  /
+                                    >
+                                    <
+                                    Route path = "/aboutus"
+                                    component = { Aboutpage }
+                                    />
+
+                                    <
+                                    Route exact path = '/menu'
+                                    component = {
+                                        () => < Menu dishes = { this.props.dishes }
+                                        />} / >
+                                        <
+                                        Route path = '/menu/:dishId'
+                                        component = { DishWithId }
+                                        /> <
+                                        Redirect to = "/home" / >
+                                        <
+                                        /Switch> <
+                                        Footer / >
+                                        <
+                                        /div>
+                                    );
+                                }
+                            }
+
+                            export default withRouter(connect(mapstateToProps, mapDispatchToProps)(Main));
+                            /*<
        Menu dishes = { this.state.dishes }
        onClick = {
              (dishId) => this.onDishSelect(dishId)
@@ -108,4 +114,4 @@ class Main extends Component {
                        */
 
 
-                    //takecarewhere yoou are using backquotes
+                            //takecarewhere yoou are using backquotes

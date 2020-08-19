@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Input, Col, FormFeedback, Row, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, FormGroup, Input, Col, FormFeedback, Row, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors, actions } from 'react-redux-form';
 
 class Contact extends Component {
     constructor(props) {
@@ -18,6 +18,7 @@ class Contact extends Component {
     handleSubmit(values) {
         console.log("Current state is:" + JSON.stringify(values));
         alert("Current state is:" + JSON.stringify(values));
+        this.props.resetFeedbackForm();
 
 
     }
@@ -103,9 +104,10 @@ class Contact extends Component {
 
             <
             /div> <
-            div className = "'col-12 col-md-9" >
+            div className = "col-12 col-md-9" >
             <
-            LocalForm onSubmit = {
+            Form model = 'feedback'
+            onSubmit = {
                 (values) => this.handleSubmit(values)
             } >
             <
@@ -295,7 +297,7 @@ class Contact extends Component {
             /Button> < /
             Col > <
             /Row> < /
-            LocalForm >
+            Form >
 
 
             <
