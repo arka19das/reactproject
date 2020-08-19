@@ -138,8 +138,8 @@ class Contact extends Component {
                     maxLength: 'Must be 15 characters or less'
                 }
             }
-            /> <
-            /Col> <
+            /> < /
+            Col > <
             /Row> <
             Row className = "form-group" >
             <
@@ -170,8 +170,8 @@ class Contact extends Component {
                     maxLength: 'Must be 15 characters or less'
                 }
             }
-            /> <
-            /Col> <
+            /> < /
+            Col > <
             /Row> <
             Row className = "form-group" >
             <
@@ -204,8 +204,8 @@ class Contact extends Component {
                     isNumber: 'Must be a number'
                 }
             }
-            /> <
-            /Col> <
+            /> < /
+            Col > <
             /Row> <
             Row className = "form-group" >
             <
@@ -234,8 +234,8 @@ class Contact extends Component {
                     validEmail: 'Invalid Email Address'
                 }
             }
-            /> <
-            /Col> <
+            /> < /
+            Col > <
             /Row> <
             Row className = "form-group" >
             <
