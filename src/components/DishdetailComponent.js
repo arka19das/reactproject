@@ -5,7 +5,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { postComment } from '../redux/ActionCreators';
 import { Loading } from './LoadingComponent'; //important bec if props.dishes was null nothing would have been displayed
 import { baseUrl } from '../shared/baseUrl';
-
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 /*
 componentDidMount() {
     console.log('DishDetail component conmponentDidMount is invoked');
@@ -16,7 +16,13 @@ componentDidUpdate() {
 
 function RenderDish({ dish }) //since it will actually receive props instead  of dish we use {dish}
 {
-    return ( <
+    return ( 
+        <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+        <
         Card >
         <
         CardImg top src = { baseUrl + dish.image }
@@ -28,6 +34,7 @@ function RenderDish({ dish }) //since it will actually receive props instead  of
         CardText > { dish.description } < /CardText> < /
         CardBody > <
         /Card>
+        </FadeTransform>
     );
 }
 
@@ -35,7 +42,10 @@ function RenderComments({ comments, postComment, dishId }) {
     const dateFormat = { year: 'numeric', month: 'short', day: '2-digit' };
     if (comments != null) {
 
-        return ( < React.Fragment > {
+        return ( < React.Fragment > 
+                <Stagger in>
+                {
+
                 comments.map((comment) => {
                     return ( < div className = "container" >
                         <
@@ -56,9 +66,11 @@ function RenderComments({ comments, postComment, dishId }) {
 
 
                 })
-            } < CommentForm dishId = { dishId }
+            } 
+            </Stagger>
+            < CommentForm dishId = { dishId }
             postComment = { postComment }
-            /> < /
+            />  </
             React.Fragment > );
     } else {
         return ( < div > < /div>);

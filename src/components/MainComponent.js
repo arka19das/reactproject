@@ -69,54 +69,40 @@ class Main extends Component {
                         );
                     }
                     const Aboutpage = () => {
-                            return ( < About leaders = { this.props.leaders }
-                                />);
+                            return ( < About leaders = { this.props.leaders }/>);
                             }
                             return ( < div >
 
-                                <
-                                Header / >
-                                <
-                                TransitionGroup >
-                                <
-                                CSSTransition key = { this.props.location.key }
-                                classNames = "page"
-                                timeout = { 300 } >
-                                <
-                                Switch location = { this.props.location } >
-                                <
-                                Route path = '/home'
-                                component = { HomePage }
-                                />  <
-                                Route path = "/contactus"
-                                component = {
-                                    () => < Contact resetFeedbackForm = { this.props.resetFeedbackForm }
-                                    /> }  / >
-                                    <
-                                    Route path = "/aboutus"
-                                    component = { Aboutpage }
-                                    />
+                                <Header />
 
-                                    <
-                                    Route exact path = '/menu'
-                                    component = {
-                                        () => < Menu dishes = { this.props.dishes }
-                                        />} / >
-                                        <
-                                        Route path = '/menu/:dishId'
-                                        component = { DishWithId }
-                                        /> <
-                                        Redirect to = "/home" / >
-                                        <
-                                        /Switch>  < /
-                                        CSSTransition > <
-                                        /TransitionGroup> <
-                                        Footer / >
-                                        <
-                                        /div>
-
+                                <TransitionGroup>
+						            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+						              <Switch location={this.props.location}>
+						                  <Route path='/home' component={HomePage} />
+						                  <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />} />
+						                  <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
+						                  <Route path='/menu/:dishId' component={DishWithId} />
+						                  <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+						                  <Redirect to="/home" />
+						              </Switch>
+						            </CSSTransition>
+          							</TransitionGroup>
+          							<Footer />
+                                        </div>
                                     );
                                 }
                             }
 
                             export default withRouter(connect(mapstateToProps, mapDispatchToProps)(Main));
+                            /*<
+       Menu dishes = { this.state.dishes }
+       onClick = {
+             (dishId) => this.onDishSelect(dishId)
+       } //see here i have done this.state..... not this.prop.dishes
+       / >  <
+       DishDetail dish = { this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0] }
+      />
+                       */
+
+
+                            //takecarewhere yoou are using backquotes
