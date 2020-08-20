@@ -13,6 +13,7 @@ import About from './AboutComponent';
 import { connect } from 'react-redux';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapstateToProps = state => {
     return {
@@ -75,9 +76,14 @@ class Main extends Component {
 
                                 <
                                 Header / >
-
                                 <
-                                Switch >
+                                TransitionGroup >
+                                <
+                                CSSTransition key = { this.props.location.key }
+                                classNames = "page"
+                                timeout = { 300 } >
+                                <
+                                Switch location = { this.props.location } >
                                 <
                                 Route path = '/home'
                                 component = { HomePage }
@@ -102,24 +108,15 @@ class Main extends Component {
                                         /> <
                                         Redirect to = "/home" / >
                                         <
-                                        /Switch> <
+                                        /Switch>  < /
+                                        CSSTransition > <
+                                        /TransitionGroup> <
                                         Footer / >
                                         <
                                         /div>
+
                                     );
                                 }
                             }
 
                             export default withRouter(connect(mapstateToProps, mapDispatchToProps)(Main));
-                            /*<
-       Menu dishes = { this.state.dishes }
-       onClick = {
-             (dishId) => this.onDishSelect(dishId)
-       } //see here i have done this.state..... not this.prop.dishes
-       / >  <
-       DishDetail dish = { this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0] }
-      />
-                       */
-
-
-                            //takecarewhere yoou are using backquotes
