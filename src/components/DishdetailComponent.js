@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, Card, CardImg, CardBody, CardText, CardTitle, Container, Breadcrumb, BreadcrumbItem, Button, Row, Col, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-import { addComment } from '../redux/ActionCreators';
+import { postComment } from '../redux/ActionCreators';
 import { Loading } from './LoadingComponent'; //important bec if props.dishes was null nothing would have been displayed
 import { baseUrl } from '../shared/baseUrl';
 
@@ -31,7 +31,7 @@ function RenderDish({ dish }) //since it will actually receive props instead  of
     );
 }
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
     const dateFormat = { year: 'numeric', month: 'short', day: '2-digit' };
     if (comments != null) {
 
@@ -57,7 +57,7 @@ function RenderComments({ comments, addComment, dishId }) {
 
                 })
             } < CommentForm dishId = { dishId }
-            addComment = { addComment }
+            postComment = { postComment }
             /> < /
             React.Fragment > );
     } else {
@@ -79,6 +79,7 @@ function RenderComments({ comments, addComment, dishId }) {
         }*/
 
         if (props.isLoading) {
+
             return ( <
                 div className = "container" >
                 <
@@ -104,6 +105,7 @@ function RenderComments({ comments, addComment, dishId }) {
                 /div>
             );
         } else if (props.dish != null) {
+            //console.log("The dish id is --------------"+props.dishId +"  12345678987654321 " +props.dish.dishId) ;
             return ( <
                 div className = 'container' >
                 <
@@ -135,8 +137,8 @@ function RenderComments({ comments, addComment, dishId }) {
                 <
                 h4 > Comments < /h4>  <
                 RenderComments comments = { props.comments }
-                addComment = { props.addComment }
-                dishId = { props.dishId }
+                postComment = { props.postComment }
+                dishId = { props.dish.id }
                 / > 
 
 
@@ -164,7 +166,7 @@ function RenderComments({ comments, addComment, dishId }) {
             this.state = {
                 isNavOpen: false
             };
-            this.handleSubmit = this.handleSubmit.bind(this);
+            // this.handleSubmit = this.handleSubmit.bind(this);
             // this.toggleNav=this.toggleNav.bind(this);//why are we doing this??
         }
 
@@ -174,11 +176,12 @@ function RenderComments({ comments, addComment, dishId }) {
                 isModalOpen: !this.state.isModalOpen
             });
         }
-        handleSubmit(values) {
+        handleSubmit = (values) => {
             /*console.log("Current state is:" + JSON.stringify(values));
-            alert("Current state is:" + JSON.stringify(values));*/
+                   alert("Current state is:" + JSON.stringify(values));*/
             this.toggleModal();
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+            alert(this.props.dishId);
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
 
 
         }
@@ -227,13 +230,13 @@ function RenderComments({ comments, addComment, dishId }) {
                 Row > <
                 Row className = "form-group" >
                 <
-                Label htmlFor = "yourname"
+                Label htmlFor = "author"
                 md = { 12 } > Your Name < /Label> <
                 Col md = { 12 } >
                 <
-                Control.text model = ".yourname"
-                id = "yourname"
-                name = "yourname"
+                Control.text model = ".author"
+                id = "author"
+                name = "author"
                 placeholder = "Your Name"
                 className = "form-control"
                 validators = {
@@ -246,7 +249,7 @@ function RenderComments({ comments, addComment, dishId }) {
 
                 /> <
                 Errors className = "text-danger"
-                model = ".yourname"
+                model = ".author"
                 show = "touched"
                 messages = {
                     {
