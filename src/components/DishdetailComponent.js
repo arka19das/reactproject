@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { addComment } from '../redux/ActionCreators';
 import { Loading } from './LoadingComponent'; //important bec if props.dishes was null nothing would have been displayed
+import { baseUrl } from '../shared/baseUrl';
 
 /*
 componentDidMount() {
@@ -18,7 +19,7 @@ function RenderDish({ dish }) //since it will actually receive props instead  of
     return ( <
         Card >
         <
-        CardImg top src = { dish.image }
+        CardImg top src = { baseUrl + dish.image }
         alt = { dish.name }
         /> <
         CardBody >
@@ -96,8 +97,8 @@ function RenderComments({ comments, addComment, dishId }) {
                 <
                 div className = "row" >
                 <
-                h4 > { props.errMess } < /h4> <
-                /div>
+                h4 > { props.errMess } < /h4> < /
+                div >
 
                 <
                 /div>
