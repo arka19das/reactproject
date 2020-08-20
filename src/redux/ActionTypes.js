@@ -8,4 +8,8 @@
   export const ADD_PROMOS = 'ADD_PROMOS';
   export const PROMOS_FAILED = 'PROMOS_FAILED';
 
+  export const LEADERS_LOADING = 'LEADERS_LOADING';
+  export const ADD_LEADERS = 'ADD_LEADERS';
+  export const LEADERS_FAILED = 'LEADERS_FAILED';
+
   //Action_types => actioncreators =>reducers dishes.js promotions.js => Componentts(main then home then dishdetail,menu)

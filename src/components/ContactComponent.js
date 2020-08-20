@@ -16,8 +16,9 @@ class Contact extends Component {
         //handleinputchange handleBlur  is done by react-redux-form
         //handleSubmit = (event) =>{} another wayarrow func
     handleSubmit(values) {
-        console.log("Current state is:" + JSON.stringify(values));
-        alert("Current state is:" + JSON.stringify(values));
+        //console.log("Current state is:" + JSON.stringify(values));
+        //alert("Current state is:" + JSON.stringify(values));
+        this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email, values.contactType, values.message,values.agree);
         this.props.resetFeedbackForm();
 
 

@@ -6,6 +6,6 @@ export const InitialFeedback = {
 
     contactType: 'Tel.',
     message: '',
-    agree: false,
-    contactType: 'Tel'
+    agree: false
+
 }
